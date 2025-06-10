@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>📋 Minha To-do List</h1>
+      <h1>Minha To-do List</h1>
       <input
         type="text"
         value={text}

@@ -1,34 +1,82 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { v4 as uuidv4 } from 'uuid'
+import TodoItem from './components/TodoItem'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState([])
+  const [text, setText] = useState('')
+  const [error, setError] = useState('')
+
+  const addTodo = () => {
+    if (!text.trim()) {
+      setError('Por favor, digite uma tarefa')
+      return
+    }
+    setError('')
+    const newTodo = {
+      id: uuidv4(),
+      text,
+      completed: false,
+    }
+    setTodos([...todos, newTodo])
+    setText('')
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      addTodo()
+    }
+  }
+
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    )
+  }
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id))
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="todo-container">
+      <h1>Minha To-do List</h1>
+      <div className="input-container">
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value)
+            setError('')
+          }}
+          onKeyDown={handleKeyDown}
+          placeholder="Digite sua tarefa"
+          aria-label="Adicionar nova tarefa"
+        />
+        <button onClick={addTodo} className="add-button">
+          Adicionar
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      {error && <p className="error-message">{error}</p>}
+
+      <div className="todo-list">
+        {todos.length === 0 ? (
+          <p className="empty-message">Nenhuma tarefa adicionada</p>
+        ) : (
+          todos.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              onToggle={toggleTodo}
+              onDelete={deleteTodo}
+            />
+          ))
+        )}
+      </div>
+    </div>
   )
 }
 
