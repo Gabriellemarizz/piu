@@ -1,0 +1,6 @@
+Só pra não esquecer:
+
+clonar: git clone + link do repo
+adicionar no github: 
+
+- entra na pasta que quer subir e coloca: git add -A, git commit -m "mensagem de commit" e git push
