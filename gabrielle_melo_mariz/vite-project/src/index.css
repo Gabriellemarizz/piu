@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f0f0f5;
+  color: #333;
+  padding: 20px;
+}
+
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #e0e0e0, #f0f0f5);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+
+.click-container, .listas-container {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.botao {
+  padding: 12px 20px;
+  margin: 10px 8px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ddd;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.botao:hover {
+  background-color: #bbb;
+}
+
+.botao-verde {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.botao-vermelho {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.valor-contador {
+  font-size: 24px;
+  margin: 12px 0;
+}
+
+.valor-cliques {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
