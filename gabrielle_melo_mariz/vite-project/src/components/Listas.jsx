@@ -1,42 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
 
-// Componente responsável por organizar e exibir lista de itens adicionados pelo usuário
+// Lista de listas de carros
+const listasDeCarros = [
+  [
+    { modelo: "Gol", ano: 2020, cor: "vermelha" },
+    { modelo: "Onix", ano: 2021, cor: "preta" },
+  ],
+  [
+    { modelo: "Civic", ano: 2019, cor: "vermelha" },
+    { modelo: "Corolla", ano: 2022, cor: "branca" },
+  ],
+];
+
+//exibir várias listas de carros
 function Listas() {
-  const [novoItem, setNovoItem] = useState("");      // controla o valor do input
-  const [lista, setLista] = useState([]);            // armazena os itens adicionados
-
-  // Adiciona o novo item à lista
-  const adicionarItem = () => {
-    if (novoItem.trim() !== "") {                    // impede adicionar itens vazios
-      setLista([...lista, novoItem]);
-      setNovoItem("");                               // limpa o input
-    }
-  };
-
   return (
-    <div>
-      <h1>Lista de Tarefas:</h1><br></br>
+    <div className="lis-container">
+      <h2>Listas de Carros</h2>
 
-      <input
-        type="text"
-        value={novoItem}
-        onChange={(e) => setNovoItem(e.target.value)}
-        placeholder="Digite sua tarefa"
-        style={{ padding: "8px", marginRight: "10px" }}
-      />
-      <button onClick={adicionarItem} style={{ padding: "8px" }}>
-        Adicionar
-      </button>
-      <br></br>
-      <br></br>
-      <h2>Itens:</h2>
-      <ul>
-        {lista.map((item, index) => (
-          <ul key={index}>{item}</ul>
-        ))}
-      </ul>
+      {listasDeCarros.map((lista, indexLista) => (
+        <div key={indexLista} style={{ marginBottom: "20px" }}>
+          <h3>Lista {indexLista + 1}</h3>
+
+          <h4>Todos os Carros:</h4>
+          <ul>
+            {lista.map((carro, indexCarro) => (
+              <li key={indexCarro}>
+                {carro.modelo} - {carro.ano}
+              </li>
+            ))}
+          </ul>
+
+          <h4>Carros Vermelhos:</h4>
+          <ul>
+            {lista
+              .filter((carro) => carro.cor === "vermelha")
+              .map((carro, indexVermelho) => (
+                <li key={indexVermelho}>
+                  {carro.modelo} - {carro.ano}
+                </li>
+              ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }
 
 export default Listas;
+
