@@ -29,7 +29,3 @@ npm run dev
 - Filtros por status
 - Alerta visual para tarefas atrasadas
 - Interface responsiva com foco em UX
-
-## Licença
-
-Livre para uso educacional.
