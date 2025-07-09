@@ -1,17 +1,10 @@
 # To-Do List em React + Vite
 
-Esta é uma aplicação de lista de tarefas desenvolvida com React JS e Vite. Ela permite:
-
-- Adicionar novas tarefas com prazo
-- Marcar tarefas como realizadas, pendentes ou não realizadas
-- Visualizar data de criação e prazo
-- Filtrar por status
-- Reordenar tarefas com drag-and-drop
-
-## Instalação
-
-1. Clone ou extraia este repositório.
-2. Execute os comandos:
+- Adiciona novas tarefas com prazo
+- Marca tarefas como realizadas, pendentes ou não realizadas
+- Visualiza data de criação e prazo
+- Filtra por status
+- Reordena tarefas com drag-and-drop
 
 ```bash
 npm install
